@@ -21,10 +21,11 @@ error MyError do
   e = env['sinatra.error']
   { status: :failed, reason: e.message }.to_json
 end
-error do
+error Exception do
   e = env['sinatra.error']
-  { status: :failed, reason: 'format error', e: e }.to_json
+  { status: :failed, reason: 'internal error', e: e }.to_json
 end
+
 not_found do
   status 404
   { status: :not_found }.to_json

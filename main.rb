@@ -11,6 +11,3 @@ ActiveRecord::Base.establish_connection(
     ENV['RAILS_ENV'] || 'development'
   ]
 )
-after do
-  ActiveRecord::Base.connection.close
-end

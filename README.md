@@ -66,6 +66,11 @@
     - String user_id
     - String token
     
+- POST /api/v1/register?username=&password=
+    - Integer user_id
+    - 注册用户
+    - 如果用户名存在则失败
+    
 ### cURL例子
 - 登陆
 

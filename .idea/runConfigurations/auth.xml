@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="auto" type="RubyRunConfigurationType" factoryName="Ruby" singleton="true">
+  <configuration default="false" name="auth" type="RubyRunConfigurationType" factoryName="Ruby" singleton="true">
     <module name="sinatra" />
     <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
     <RUBY_RUN_CONFIG NAME="WORK DIR" VALUE="$MODULE_DIR$" />
