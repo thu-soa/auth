@@ -71,6 +71,13 @@
     - 注册用户
     - 如果用户名存在则失败
     
+### Github Adapter使用方法
+
+- POST /api/v1/register?github_user_name=&github_token&user_id= token
+    - 将user_id的用户绑定github用户
+
+- ruby github_worker.rb 会进行一次爬取数据
+    
 ### cURL例子
 - 登陆
 
