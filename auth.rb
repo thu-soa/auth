@@ -3,7 +3,11 @@ require './main'
 require './app/models/user'
 require './app/models/token'
 require './errors'
+require 'sinatra/cross_origin'
 
+configure do
+  enable :cross_origin
+end
 after do
   ActiveRecord::Base.connection.close
 end
