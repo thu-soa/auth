@@ -42,7 +42,7 @@
             - String source
             - String url
 
-### For clients' polling
+#### For clients' polling
 - GET /api/v1/unread_messages   token
     - SimpleMessage[] simple_messages
     - 获取所有未读的消息列表
@@ -50,11 +50,15 @@
     - SimpleMessage[] simple_messages
     - 获取某个数据源的所有未读消息列表
 
-### For message pushing
+#### For message pushing
 - POST /api/v1/unread_messages?user_id=1    token, 这个user_id和token是message source用户的
     - data: SimpleMessage 
     - return: message_id: 1
     - 添加消息
+    
+#### 获取某个用户所有注册过的adapter
+- GET /api/v1/all_sources token
+    - { 'status': 'ok', 'sources': ['github', 'vultr'] }
     
 ### Authorization Server(是和Scheduler独立的服务, 但是他们即使部署在同一个端口, URI也不会冲突)
 
@@ -75,8 +79,22 @@
 
 - POST /api/v1/register?github_user_name=&github_token&user_id= token
     - 将user_id的用户绑定github用户
+    
+- GET /api/v1/check_registered? token
+    - { 'status': 'ok', 'registered': true/false }
+    - 该用户是否注册过
 
 - ruby github_worker.rb 会进行一次爬取数据
+
+### Vultr Adapter使用方法
+- POST /api/v1/register?vultr_token&user_id= token
+    - 将user_id的用户绑定vultr用户
+    
+- GET /api/v1/check_registered? token
+    - { 'status': 'ok', 'registered': true/false }
+    - 该用户是否注册过
+
+- ruby vultr_worker.rb 会进行一次爬取数据
     
 ### cURL例子
 - 登陆
