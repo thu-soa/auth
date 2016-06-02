@@ -45,7 +45,8 @@ post '/api/v1/register' do
     if user
       {
           status: :ok,
-          user_id: user.id
+          user_id: user.id,
+          token: user.create_token.token_string
       }.to_json
     else
       er 'failed to create user'
