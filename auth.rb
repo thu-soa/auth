@@ -40,12 +40,12 @@ post '/api/v1/register' do
   if username && password
     user = User.find_by_name(username)
     er 'user already exist' if user
-    user = User.create(name: username, type: 'user')
+    user = User.create(name: username, user_type: 'user')
     if user
       {
           status: :ok,
           user_id: user.id
-      }
+      }.to_json
     else
       er 'failed to create user'
     end
@@ -71,4 +71,5 @@ post '/api/v1/login' do
     er 'parameters error'
   end
 end
+
 
