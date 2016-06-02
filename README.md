@@ -49,6 +49,9 @@
 - GET /api/v1/sources/:source_name/unread_messages  token
     - SimpleMessage[] simple_messages
     - 获取某个数据源的所有未读消息列表
+- DELETE /api/v1/unread_messages?id=1 token
+    - { status: :ok }
+    - 删除消息
 
 #### For message pushing
 - POST /api/v1/unread_messages?user_id=1    token, 这个user_id和token是message source用户的

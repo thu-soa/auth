@@ -4,6 +4,7 @@ require './app/models/user'
 require './app/models/token'
 require './errors'
 require 'sinatra/cross_origin'
+require 'digest'
 
 configure do
   enable :cross_origin
@@ -40,7 +41,7 @@ post '/api/v1/register' do
   if username && password
     user = User.find_by_name(username)
     er 'user already exist' if user
-    user = User.create(name: username, user_type: 'user')
+    user = User.create(name: username, user_type: 'user', password_md5: Digest::MD5.hexdigest(password))
     if user
       {
           status: :ok,
@@ -59,11 +60,15 @@ post '/api/v1/login' do
   password = params['password']
   if username && password
     if (user = User.find_by_name(username))
-      {
-          status:   :ok,
-          user_id:  user.id,
-          token:    user.create_token.token_string
-      }.to_json
+      if user.password_md5 == Digest::MD5.hexdigest(password)
+        {
+            status:   :ok,
+            user_id:  user.id,
+            token:    user.create_token.token_string
+        }.to_json
+      else
+        er 'wrong password'
+      end
     else
       er 'user not found'
     end
