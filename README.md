@@ -80,7 +80,7 @@
     
 ### Github Adapter使用方法
 
-- POST /api/v1/register?github_user_name=&github_token&user_id= token
+- POST /api/v1/register?github_user_name=&github_token&id= token
     - 将user_id的用户绑定github用户
     
 - GET /api/v1/check_registered? token
