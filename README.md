@@ -61,7 +61,7 @@
     
 #### 获取某个用户所有注册过的adapter
 - GET /api/v1/all_sources token
-    - { 'status': 'ok', 'sources': ['github', 'vultr'] }
+    - { 'status': 'ok', 'sources': {'github': 'http://xxx', 'vultr': 'http://'] }
     
 ### Authorization Server(是和Scheduler独立的服务, 但是他们即使部署在同一个端口, URI也不会冲突)
 
